@@ -1,0 +1,5 @@
+name = "C++ 示例"
+id = "cpp-demo"
+desc = "用 C++ 源码写的页面示例，验证编译型外部插件"
+lang = "cpp"
+entry = "main.cpp"

@@ -1,0 +1,103 @@
+# 计算器：RPP 插件示例
+# 输入 A / B，点按钮做四则运算；结果写回 Text 元素。
+
+func main:
+    ui.page("calc", "计算器");
+    ui.text("hint", "Tab 切换 · 直接键入 · 回车执行");
+    ui.group("input", "输入");
+    ui.input("a", "A");
+    ui.input("b", "B");
+    ui.end_group();
+    ui.group("result", "结果");
+    ui.text("result", "结果：0");
+    ui.end_group();
+    ui.group("ops", "运算");
+    ui.button("add", "加", add);
+    ui.button("sub", "减", sub);
+    ui.button("mul", "乘", mul);
+    ui.button("div", "除", div);
+    ui.button("reset", "清空", reset);
+    ui.button("help", "帮助", help);
+    ui.end_group();
+    ui.show();
+.
+
+func about:
+    ui.page("about", "计算器");
+    ui.text("intro", "用 RPP 写的四则运算示例。");
+    ui.text("how", "打开后：Tab 切换焦点，直接键入数字，回车执行。");
+    ui.group("about_ops", "功能");
+    ui.text("about_add", "加 / 减 / 乘 / 除，结果写回「结果」行。");
+    ui.end_group();
+.
+
+func help:
+    ui.page("help", "帮助");
+    ui.text("hint1", "计算器插件：用 RPP 写成的示例。");
+    ui.text("hint2", "输入 A/B，按运算按钮；结果会写回「结果」行。");
+    ui.text("hint3", "这一页演示了自定义页面路径与返回栈。");
+    ui.button("back", "返回计算器", go_back);
+    ui.show();
+.
+
+func go_back:
+    ui.back();
+.
+
+func add:
+    if !ready():
+        return;
+    .
+    a = float(ui.find("a").value);
+    b = float(ui.find("b").value);
+    ui.find("result").text = "结果：" + str(a + b);
+.
+
+func sub:
+    if !ready():
+        return;
+    .
+    a = float(ui.find("a").value);
+    b = float(ui.find("b").value);
+    ui.find("result").text = "结果：" + str(a - b);
+.
+
+func mul:
+    if !ready():
+        return;
+    .
+    a = float(ui.find("a").value);
+    b = float(ui.find("b").value);
+    ui.find("result").text = "结果：" + str(a * b);
+.
+
+func div:
+    if !ready():
+        return;
+    .
+    a = float(ui.find("a").value);
+    b = float(ui.find("b").value);
+    if b == 0:
+        ui.toast("不能除以 0");
+        return;
+    .
+    ui.find("result").text = "结果：" + str(a / b);
+.
+
+func reset:
+    ui.find("a").value = "";
+    ui.find("b").value = "";
+    ui.find("result").text = "结果：0";
+.
+
+func ready:
+    if ui.find("a").value == "":
+        ui.toast("先填 A");
+        return false;
+    .
+    if ui.find("b").value == "":
+        ui.toast("先填 B");
+        return false;
+    .
+    return true;
+.

@@ -1,0 +1,5 @@
+name = "Python 计算器"
+id = "py-calculator"
+desc = "用 Python 源码写的四则运算插件，验证外部进程协议"
+lang = "python"
+entry = "main.py"

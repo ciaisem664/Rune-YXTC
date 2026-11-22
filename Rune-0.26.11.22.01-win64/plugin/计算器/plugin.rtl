@@ -1,0 +1,6 @@
+name = "计算器"
+id = "calculator"
+desc = "用 RPP 写的四则运算示例"
+lang = "rpp"
+entry = "rpp/main.rpp"
+about = "about"

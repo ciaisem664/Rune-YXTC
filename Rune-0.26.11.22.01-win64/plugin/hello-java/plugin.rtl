@@ -1,0 +1,5 @@
+name = "Java 示例"
+id = "java-demo"
+desc = "用 Java 源码写的页面示例，验证 Java 源码启动"
+lang = "java"
+entry = "Main.java"

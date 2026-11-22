@@ -1,0 +1,5 @@
+name = "C# 示例"
+id = "cs-demo"
+desc = "用 C# 源码写的页面示例，验证 csc 编译缓存"
+lang = "csharp"
+entry = "Main.cs"
